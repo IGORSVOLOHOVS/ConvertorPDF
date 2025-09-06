@@ -1,0 +1,10 @@
+logging:
+  level: "INFO"
+  rotation: "100 MB"
+  retention: "10 days"
+  enqueue: true
+  serialize: true
+
+supported_formats:
+  - ".docx"
+  - ".pptx"

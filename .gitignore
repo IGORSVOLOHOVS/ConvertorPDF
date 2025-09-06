@@ -1,0 +1,11 @@
+*.pdf
+*.log
+*.pyc
+main.bin
+.venv
+2025-*
+main.build
+main.dist
+main.onefile-build
+logs
+FileFlowConverter.exe

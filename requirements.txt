@@ -1,0 +1,7 @@
+PyQt6
+pytest
+pytest-benchmark
+PyYAML
+loguru
+pytest-mock
+pywin32-ctypes; sys_platform == 'win32'
