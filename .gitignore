@@ -9,3 +9,4 @@ main.dist
 main.onefile-build
 logs
 FileFlowConverter.exe
+.env
