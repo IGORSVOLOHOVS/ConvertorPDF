@@ -1,0 +1,37 @@
+# The tests existed and nothing ran them. This does, on every push.
+#
+# windows-latest rather than ubuntu, for two reasons: this is a Windows tool -
+# it drives Microsoft Office to do the conversion - and PyQt6 installs there as
+# a self-contained wheel, where on a headless Linux runner it needs system
+# libraries and an offscreen platform plugin before it will even import.
+#
+# No `schedule:` trigger: a weekly run over unchanged code cannot find anything
+# new, and can only fail on its own and mail about it.
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Tests
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      # Found by installing nothing into a clean virtualenv and adding only what
+      # each import error named. pytest-benchmark is needed because one test is
+      # a benchmark and errors out without it.
+      - run: pip install pytest pytest-benchmark PyQt6 loguru
+      # The console script, not `python -m pytest`: `-m` puts the working
+      # directory on sys.path and the script does not, so this is the stricter
+      # of the two and matches what a runner does.
+      - run: pytest -q

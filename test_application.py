@@ -26,11 +26,18 @@ def test_controller_add_and_clear_files(controller):
     controller.clear_files()
     assert len(controller.files) == 0
 
-def test_run_conversion_on_empty_list_does_nothing(controller, mocker):
-    """Тест: Проверяем, что конвертация не запускается с пустым списком."""
-    spy_start = mocker.spy(controller.conversion_started, 'emit')
+def test_run_conversion_on_empty_list_does_nothing(controller):
+    """Тест: Проверяем, что конвертация не запускается с пустым списком.
+
+    Слушаем сигнал слотом, а не подменяем ему emit. В PyQt6 у связанного
+    сигнала emit доступен только для чтения, и mocker.spy(..., 'emit') падает
+    с AttributeError — тест ломался ещё до того, как что-то проверил. Слот
+    вдобавок ближе к правде: так сигнал слушает и настоящий UI.
+    """
+    started = []
+    controller.conversion_started.connect(lambda *args: started.append(args))
     controller.run_conversion()
-    spy_start.assert_not_called()
+    assert started == []
 
 def test_worker_emits_correct_signals(mock_converter, tmp_path):
     """Тест: Проверяем, что Worker правильно отправляет сигналы о прогрессе и завершении."""
