@@ -4,6 +4,32 @@
 обещания README без кода вынесены в раздел 3.8. Обзор проекта:
 [`docs/README.md`](docs/README.md).
 
+<!-- jira-sync:start -->
+Jira: KAN-124
+
+## Tasks
+
+This list is one ticket in Jira project KAN, [KAN-124](https://igorsvolohovs.atlassian.net/browse/KAN-124). Each line is a checkbox there: tick it in Jira and the sync ticks it here; add a checkbox there and it is appended here. Done items are the features described in section 3; open items are what the project declares but the code does not do yet.
+
+- [x] Запуск (section 3.1) <!-- spec-c001fc7717 -->
+- [x] Список файлов (section 3.2) <!-- spec-287849888b -->
+- [x] Запуск конвертации (section 3.3) <!-- spec-1b9e52dacf -->
+- [x] Обработка файлов (section 3.4) <!-- spec-2698b19194 -->
+- [x] Завершение (section 3.5) <!-- spec-be19888666 -->
+- [x] Конвертер (section 3.6) <!-- spec-30d9c5795b -->
+- [x] Журнал (section 3.7) <!-- spec-67ade741ae -->
+- [ ] `OfficeConverter` через COM для Microsoft Office на Windows (declared, not implemented) <!-- spec-officeconverter-com-microsoft-office-windows -->
+- [ ] «Фабричная функция определяет ОС» (declared, not implemented) <!-- spec-1e47602022 -->
+- [ ] Приложение «drives Microsoft Office» (declared, not implemented) <!-- spec-drives-microsoft-office -->
+- [ ] Форматы `.docx`, `.pptx`, `.doc`, `.ppt` (declared, not implemented) <!-- spec-docx-pptx-doc-ppt -->
+- [ ] Настройки логирования из `config/settings.yaml` (declared, not implemented) <!-- spec-config-settings-yaml -->
+- [ ] «Сохраняет настройки интерфейса» (declared, not implemented) <!-- spec-68552bab05 -->
+- [ ] Статус документа (declared, not implemented) <!-- spec-4d2ba1ad73 -->
+- [ ] Признак успеха `convert() -> bool` (declared, not implemented) <!-- spec-convert-bool -->
+- [ ] Зависимости `PyYAML`, `pywin32-ctypes`, `pytest-mock` (declared, not implemented) <!-- spec-pyyaml-pywin32-ctypes-pytest-mock -->
+
+<!-- jira-sync:end -->
+
 ## 1. Назначение и границы
 
 Настольное GUI-приложение, которое переводит выбранные пользователем файлы в PDF
